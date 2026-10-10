@@ -1,13 +1,96 @@
 <!doctype html>
-<html lang="de" data-beasties-container>
-  <head><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta charset="utf-8">
-    <title>Heischwumm</title>
-    <base href="/">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <style>@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v145/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>
-  <style>html,body{height:100%;color:#000000de;background:#fff;position:relative;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{font-family:Roboto,Helvetica Neue,sans-serif}body{margin:0;padding:0;height:100vh;overflow-y:auto;overflow-x:hidden}app-root{display:block;height:100%}</style><link rel="stylesheet" href="styles-RWESCA3P.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-RWESCA3P.css"></noscript></head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ScreamXY – Apps by Pascal Schrei</title>
+    <meta name="description" content="Small, free apps for the web, iPhone and Apple Watch: Heischwumm, King's Cup, Mampf!, Pacegrain and Werkout. Support pages and privacy policies." />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // Heischwumm used to live at this root with hash routes (#/, #/sbb).
+      if (location.hash.startsWith("#/")) {
+        location.replace("/heischwumm/" + location.hash);
+      }
+    </script>
+  </head>
   <body>
-    <app-root></app-root>
-  <script src="main-EHPCMYSQ.js" type="module"></script></body>
+    <main>
+      <h1>ScreamXY</h1>
+      <p>
+        Small apps by Pascal Schrei, Switzerland. All of them are free, have no
+        ads and no tracking. Each app has its own support page and privacy
+        policy.
+      </p>
+
+      <ul class="apps">
+        <li>
+          <h2>Heischwumm <span class="badge">Web</span></h2>
+          <p>
+            Soll ich heim schwimmen? SBB-Verbindungen ab Gümligen, das Wetter in
+            Bern und die aktuelle Aare-Temperatur auf einen Blick.
+          </p>
+          <p class="links">
+            <a href="/heischwumm/">Open the app</a> ·
+            <a href="apps/heischwumm/">Support</a> ·
+            <a href="apps/heischwumm/privacy/">Privacy</a>
+          </p>
+        </li>
+        <li>
+          <h2>King's Cup <span class="badge">Web</span></h2>
+          <p>
+            A companion for the King's Cup card game: shuffle, draw, and keep
+            your group's house rules. Everything stays in your browser.
+          </p>
+          <p class="links">
+            <a href="/kingscup/">Open the app</a> ·
+            <a href="apps/kingscup/">Support</a> ·
+            <a href="apps/kingscup/privacy/">Privacy</a>
+          </p>
+        </li>
+        <li>
+          <h2>Mampf! <span class="badge">Web</span><span class="badge">iPhone</span><span class="badge">Apple Watch</span></h2>
+          <p>
+            Wochenplan, Rezepte, Einkaufsliste und Ausgaben für deinen Haushalt
+            – gemeinsam, ohne Konto.
+          </p>
+          <p class="links">
+            <a href="https://mampf-phi.vercel.app">Open the web app</a> ·
+            <a href="apps/mampf/">Support</a> ·
+            <a href="https://mampf-phi.vercel.app/privacy">Datenschutz</a> ·
+            App Store: coming soon
+          </p>
+        </li>
+        <li>
+          <h2>Pacegrain <span class="badge">iPhone</span><span class="badge">iPad</span><span class="badge">Apple Watch</span></h2>
+          <p>
+            A little race math. A clearer finish line. A free, private pace
+            calculator.
+          </p>
+          <p class="links">
+            <a href="apps/pacegrain/">Support</a> ·
+            <a href="apps/pacegrain/privacy/">Privacy</a> ·
+            App Store: coming soon
+          </p>
+        </li>
+        <li>
+          <h2>Werkout <span class="badge">iPhone</span><span class="badge">iPad</span></h2>
+          <p>
+            Turn workout text into a structured workout for your Apple Watch or
+            Garmin watch.
+          </p>
+          <p class="links">
+            <a href="apps/werkout/">Support</a> ·
+            <a href="apps/werkout/privacy/">Privacy / Datenschutz</a> ·
+            App Store: coming soon
+          </p>
+        </li>
+      </ul>
+
+      <footer>
+        <a href="legal/">Legal notice / Impressum</a> ·
+        <a href="privacy/">Privacy of this site</a> ·
+        <a href="https://github.com/ScreamXY">GitHub</a>
+      </footer>
+    </main>
+  </body>
 </html>
