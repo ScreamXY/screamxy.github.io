@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Heischwumm – Support</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <p class="nav"><a href="/">ScreamXY</a> · <a href="privacy/">Datenschutz</a></p>
+
+      <h1>Heischwumm</h1>
+      <p>
+        Soll ich heim schwimmen? Heischwumm zeigt die nächsten SBB-Verbindungen
+        ab Gümligen, das Wetter in Bern und die aktuelle Temperatur und
+        Wassermenge der Aare auf einen Blick. Die Seite lädt alle fünf Minuten
+        neu.
+      </p>
+      <p>
+        <a href="/heischwumm/">App öffnen</a> · Verbindungen zwischen zwei
+        beliebigen Stationen: <a href="/heischwumm/#/sbb">SBB-Suche</a>
+      </p>
+      <p>
+        Fragen oder Fehler? Schreib an
+        <a href="mailto:screamcode@gmail.com">screamcode@gmail.com</a>.
+      </p>
+
+      <h2>Häufige Fragen</h2>
+      <h3>Woher kommen die Daten?</h3>
+      <p>
+        Aare-Temperatur und -Abfluss von <a href="https://aare.guru">Aare.guru</a>
+        (Messwerte des <a href="https://www.hydrodaten.admin.ch">BAFU</a>), das
+        Wetter von <a href="https://open-meteo.com/">Open-Meteo</a> (für die
+        Schweiz aus den ICON-CH-Modellen von MeteoSchweiz, Daten CC BY 4.0) und
+        die Verbindungen von
+        <a href="https://transport.opendata.ch/">transport.opendata.ch</a>.
+      </p>
+      <h3>Die Verbindung stimmt nicht mit der SBB-App überein.</h3>
+      <p>
+        Die Verbindungen kommen vom offenen Fahrplan-API von Opendata.ch, nicht
+        direkt von der SBB. Bei Störungen kann es Abweichungen geben;
+        massgebend ist die SBB-App.
+      </p>
+      <h3>Die Wetter-Icons zeigen etwas anderes als MeteoSchweiz.</h3>
+      <p>
+        Open-Meteo liefert WMO-Wettercodes, die Heischwumm auf sein eigenes
+        Icon-Set abbildet. Kleine Unterschiede zu anderen Apps sind normal.
+      </p>
+      <h3>Kann ich eine andere Station als Gümligen einstellen?</h3>
+      <p>
+        Die Startseite ist auf Gümligen festgelegt. Für andere Strecken gibt
+        es die <a href="/heischwumm/#/sbb">freie Verbindungssuche</a>.
+      </p>
+
+      <footer>
+        <a href="/legal/">Impressum</a> ·
+        <a href="https://github.com/ScreamXY/heischwumm">Quellcode</a>
+      </footer>
+    </main>
+  </body>
+</html>
