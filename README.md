@@ -26,8 +26,8 @@ domain and must not be put here: <https://screamxy.github.io/heischwumm/>
 
 - Each iOS app's pages are the source of truth here; the app repos point to
   these URLs from `*Links.swift` and their App Store listings.
-- Keep `screamcode@gmail.com` out of committed pages: `python3 -I scripts/check.py`
-  fails while a placeholder is left.
+- Contact address on every page: screamcode@gmail.com. `python3 -I scripts/check.py`
+  fails while a `CONTACT_EMAIL` placeholder is left.
 - Dates: update the "Last updated" line of a policy whenever its content
   changes.
 
