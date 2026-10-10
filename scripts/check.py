@@ -1,53 +1,57 @@
 #!/usr/bin/env python3
-"""Checks the portal before publishing: every internal link resolves to a file,
-every page has a stylesheet that exists, and no placeholder is left.
+"""Checks the portal before publishing.
 
-Usage: python3 -I scripts/check.py [--allow-placeholders]
+- Every internal link resolves to a file in this repository.
+- Every mailto: link uses CONTACT_EMAIL, and every page outside the start and
+  404 pages names it, so changing the address is one edit here plus a grep.
+- Every privacy page carries a "last updated" line.
+- No path served by another repository's GitHub Pages exists here.
+
+Usage: python3 -I scripts/check.py
 """
 import os
 import re
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PLACEHOLDERS = ("CONTACT_EMAIL", "RELEASE_DATE")
-# Served by other repositories' GitHub Pages, not by this one.
+ROOT = Path(__file__).resolve().parent.parent
+CONTACT_EMAIL = "screamcode@gmail.com"
+# Served by other repositories' GitHub Pages under the same domain.
 EXTERNAL_PATHS = ("/heischwumm/", "/kingscup/")
+NO_CONTACT = {"index.html", "404.html"}
 
-allow_placeholders = "--allow-placeholders" in sys.argv
 problems = []
-pages = []
-for dirpath, _, files in os.walk(ROOT):
-    if "/.git" in dirpath:
-        continue
-    for name in files:
-        if name.endswith(".html"):
-            pages.append(os.path.join(dirpath, name))
+pages = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
 
-for page in sorted(pages):
-    text = open(page, encoding="utf-8").read()
-    rel = os.path.relpath(page, ROOT)
-    if not allow_placeholders:
-        for ph in PLACEHOLDERS:
-            if ph in text:
-                problems.append(f"{rel}: placeholder {ph} left in page")
-    for href in re.findall(r'(?:href|src)="([^"]+)"', text):
+for external in EXTERNAL_PATHS:
+    if (ROOT / external.strip("/")).exists():
+        problems.append(f"{external} belongs to another repository and must not exist here")
+
+for page in pages:
+    text = page.read_text(encoding="utf-8")
+    rel = page.relative_to(ROOT).as_posix()
+
+    for email in re.findall(r'href="mailto:([^"]+)"', text):
+        if email != CONTACT_EMAIL:
+            problems.append(f"{rel}: contact address {email} differs from {CONTACT_EMAIL}")
+    if rel not in NO_CONTACT and CONTACT_EMAIL not in text:
+        problems.append(f"{rel}: no contact address")
+    if rel.endswith("privacy/index.html") and not re.search(r'class="meta">(Last updated|Stand):', text):
+        problems.append(f"{rel}: no 'last updated' line")
+
+    for href in re.findall(r'href="([^"]+)"', text):
         if href.startswith(("http://", "https://", "mailto:", "#")):
             continue
         path = href.split("#")[0]
-        if not path:
+        if path.startswith(EXTERNAL_PATHS):
             continue
-        if path.startswith("/"):
-            if path.startswith(EXTERNAL_PATHS):
-                continue
-            target = os.path.join(ROOT, path.lstrip("/"))
-        else:
-            target = os.path.normpath(os.path.join(os.path.dirname(page), path))
+        target = ROOT / path.lstrip("/") if path.startswith("/") else page.parent / path
         if path.endswith("/"):
-            target = os.path.join(target, "index.html")
-        if not os.path.exists(target):
+            target = target / "index.html"
+        if not target.exists():
             problems.append(f"{rel}: broken link {href}")
 
-for p in problems:
-    print(p)
+for problem in problems:
+    print(problem)
 print(f"{len(pages)} pages checked, {len(problems)} problem(s)")
 sys.exit(1 if problems else 0)

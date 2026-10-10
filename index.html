@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ScreamXY – Apps by Pascal Schrei</title>
     <meta name="description" content="Small, free apps for the web, iPhone and Apple Watch: Heischwumm, King's Cup, Mampf!, Pacegrain and Werkout. Support pages and privacy policies." />
-    <link rel="stylesheet" href="style.css" />
     <script>
-      // Heischwumm used to live at this root with hash routes (#/, #/sbb).
+      // Heischwumm lived at this root with hash routes (#/, #/sbb) until
+      // October 2026. The fragment never reaches the server or /heischwumm/,
+      // so only this document can redirect old bookmarks. Runs before the
+      // stylesheet so a redirect costs no extra request.
       if (location.hash.startsWith("#/")) {
         location.replace("/heischwumm/" + location.hash);
       }
     </script>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <main>

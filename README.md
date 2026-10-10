@@ -11,7 +11,7 @@ build step. GitHub Pages serves the `master` branch as is.
 | `apps/<app>/privacy/`   | Privacy policy (App Store Connect "Privacy Policy URL") |
 | `legal/`                | Legal notice / Impressum                           |
 | `privacy/`              | Privacy notice for this site itself                |
-| `scripts/check.py`      | Link and placeholder check, run before publishing  |
+| `scripts/check.py`      | Link, contact-address and date check; run before publishing |
 
 Mampf's privacy policy stays in the Mampf web app
 (<https://mampf-phi.vercel.app/privacy>); `apps/mampf/` is only the support
@@ -26,8 +26,13 @@ domain and must not be put here: <https://screamxy.github.io/heischwumm/>
 
 - Each iOS app's pages are the source of truth here; the app repos point to
   these URLs from `*Links.swift` and their App Store listings.
-- Contact address on every page: screamcode@gmail.com. `python3 -I scripts/check.py`
-  fails while a `CONTACT_EMAIL` placeholder is left.
+- The contact address is `CONTACT_EMAIL` in `scripts/check.py`; the check fails
+  if any page uses another one. To change it, edit the constant and grep.
+- Shared policy sections ("Who is responsible", "Hosting", "Your rights",
+  "Changes", and their German forms) use one wording on every page; paste it
+  verbatim so drift shows up in `git grep`.
+- Stylesheet and home links are root-absolute (`/style.css`, `/`); the user
+  site is always served from the domain root.
 - Dates: update the "Last updated" line of a policy whenever its content
   changes.
 
