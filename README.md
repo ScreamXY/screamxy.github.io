@@ -4,15 +4,17 @@ The ScreamXY portal: one start page for all apps, plus the support page and
 privacy policy App Store Connect asks for. Plain HTML and one stylesheet, no
 build step. GitHub Pages serves the `master` branch as is.
 
-| Path                    | What                                               |
-| ----------------------- | -------------------------------------------------- |
-| `index.html`            | Start page listing every app                       |
-| `apps/<app>/`           | Support page (App Store Connect "Support URL")     |
-| `apps/<app>/privacy/`   | Privacy policy (App Store Connect "Privacy Policy URL") |
-| `legal/`                | Legal notice / Impressum                           |
-| `privacy/`              | Privacy notice for this site itself                |
-| `scripts/check.py`      | Link, contact-address and date check; run before publishing |
-| `fonts/`                | Signika, self-hosted (SIL OFL); no fonts from third parties |
+| Path                                  | What                                                        |
+| ------------------------------------- | ----------------------------------------------------------- |
+| `index.html`                          | Start page listing every app                                |
+| `apps/<app>/`                         | Support page (App Store Connect "Support URL")              |
+| `apps/<app>/privacy/`                 | Privacy policy (App Store Connect "Privacy Policy URL")     |
+| `legal/`                              | Legal notice / Impressum                                    |
+| `privacy/`                            | Privacy notice for this site itself                         |
+| `scripts/check.py`                    | Link, contact-address and date check; run before publishing |
+| `fonts/`                              | Signika, self-hosted (SIL OFL); no fonts from third parties |
+| `favicon.svg`                         | Site icon: `<!>`, a scream in code brackets (screamcode)    |
+| `favicon.ico`, `apple-touch-icon.png` | Rendered from `favicon.svg` by `scripts/make_icons.py`      |
 
 Mampf's privacy policy stays in the Mampf web app
 (<https://mampf-phi.vercel.app/privacy>); `apps/mampf/` is only the support
