@@ -12,6 +12,7 @@ build step. GitHub Pages serves the `master` branch as is.
 | `legal/`                | Legal notice / Impressum                           |
 | `privacy/`              | Privacy notice for this site itself                |
 | `scripts/check.py`      | Link, contact-address and date check; run before publishing |
+| `fonts/`                | Signika, self-hosted (SIL OFL); no fonts from third parties |
 
 Mampf's privacy policy stays in the Mampf web app
 (<https://mampf-phi.vercel.app/privacy>); `apps/mampf/` is only the support
