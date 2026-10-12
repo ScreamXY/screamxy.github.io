@@ -173,9 +173,10 @@ code {
   font-weight: 600;
   text-decoration: none;
 }
+/* Twice the favicon's 16-unit grid, so its strokes land on whole pixels. */
 .brand-mark {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
 }
 .site-nav {
   display: flex;
