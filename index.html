@@ -16,7 +16,7 @@
     <title>ScreamXY – Small apps for the everyday</title>
     <meta
       name="description"
-      content="Small apps by Pascal Schrei in Switzerland: Heischwumm, Mampf!, King's Cup, Pacegrain, RainScope and Werkout. No ads, no tracking. Free where possible, otherwise priced to cover costs."
+      content="Small apps by Pascal Schrei in Switzerland: Heischwumm, Mampf!, King's Cup, Pacegrain, RainScope, HeartGlance and Werkout. No ads, no tracking. Free where possible, otherwise priced to cover costs."
     />
     <script>
       // Heischwumm lived at this root with hash routes (#/, #/sbb) until
@@ -70,7 +70,7 @@
           <p>
             Swim home along the Aare. See where it’s raining. Plan the week’s
             meals. Find your running pace. Send a workout to your watch. Draw
-            the next card.
+            the next card. Glance at your latest heart rate.
           </p>
           <p>
             Made by Pascal Schrei in Switzerland, with no ads and no tracking.
@@ -92,6 +92,9 @@
             </li>
           </ul>
           <ul class="plate plate-left">
+            <li>
+              <a href="apps/heartglance/">HeartGlance <span>Watch</span></a>
+            </li>
             <li>
               <a href="apps/pacegrain/">Pacegrain <span>iPhone</span></a>
             </li>
@@ -394,6 +397,32 @@
         <section class="app-group" aria-labelledby="ios-title">
           <h2 id="ios-title">Coming to the App Store</h2>
           <ul class="app-list">
+            <li class="app">
+              <div class="app-art art-heart" aria-hidden="true">
+                <svg viewBox="0 0 380 214" fill="none" preserveAspectRatio="xMidYMid slice">
+                  <rect x="155" y="-18" width="70" height="250" rx="18" fill="#bd8c92" />
+                  <rect x="120" y="31" width="140" height="154" rx="38" fill="#593b43" />
+                  <rect x="129" y="40" width="122" height="136" rx="30" fill="#fff7f6" />
+                  <rect x="258" y="68" width="8" height="25" rx="3" fill="#593b43" />
+                  <path d="M190 66c-15-20-34 0 0 23 34-23 15-43 0-23Z" fill="#b75162" />
+                  <text x="190" y="126" text-anchor="middle" fill="#593b43" font-family="Signika, sans-serif" font-size="34" font-weight="600">68</text>
+                  <text x="190" y="151" text-anchor="middle" fill="#865c65" font-family="Signika, sans-serif" font-size="15">4 min ago</text>
+                  <circle cx="64" cy="88" r="5" fill="#cfa1a7" />
+                  <circle cx="304" cy="147" r="8" fill="#cfa1a7" />
+                </svg>
+              </div>
+              <div class="app-body">
+                <h3>HeartGlance</h3>
+                <p>Your latest heart rate and how old it is, right on your watch face.
+                  Reads what Apple Watch already measures, with no extra workouts or tracking.</p>
+                <p class="app-platforms">For Apple Watch. No iPhone app needed.</p>
+                <div class="app-links">
+                  <a href="apps/heartglance/" aria-label="HeartGlance support">Support</a>
+                  <a href="apps/heartglance/privacy/" aria-label="HeartGlance privacy policy">Privacy</a>
+                </div>
+              </div>
+            </li>
+
             <li class="app">
               <div class="app-art art-pace" aria-hidden="true">
                 <svg
@@ -707,6 +736,7 @@
       <nav aria-label="Footer navigation">
         <a href="legal/">Legal notice / Impressum</a>
         <a href="privacy/">Privacy of this site</a>
+        <a href="security/">Security</a>
         <a href="https://github.com/ScreamXY">GitHub</a>
       </nav>
     </footer>

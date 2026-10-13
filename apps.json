@@ -1,0 +1,37 @@
+[
+  {
+    "id": "heartglance",
+    "privacy": "/apps/heartglance/privacy/",
+    "native_contact": "HeartGlance/App/HeartGlanceLinks.swift"
+  },
+  {
+    "id": "rainscope",
+    "privacy": "/apps/rainscope/privacy/",
+    "native_contact": "RainScope/App/RainScopeLinks.swift"
+  },
+  {
+    "id": "pacegrain",
+    "privacy": "/apps/pacegrain/privacy/",
+    "native_contact": "App/PacegrainLinks.swift"
+  },
+  {
+    "id": "werkout",
+    "privacy": "/apps/werkout/privacy/",
+    "native_contact": "App/Sources/Settings/WerkoutLinks.swift"
+  },
+  {
+    "id": "mampf",
+    "privacy": "https://mampf-phi.vercel.app/privacy",
+    "native_contact": "apple/Mampf/Services/MampfLinks.swift"
+  },
+  {
+    "id": "heischwumm",
+    "privacy": "/apps/heischwumm/privacy/",
+    "native_contact": null
+  },
+  {
+    "id": "kingscup",
+    "privacy": "/apps/kingscup/privacy/",
+    "native_contact": null
+  }
+]

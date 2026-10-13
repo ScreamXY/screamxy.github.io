@@ -6,10 +6,12 @@
   404 pages names it, so changing the address is one edit here plus a grep.
 - Every privacy page carries a "last updated" line.
 - No path served by another repository's GitHub Pages exists here.
+- The app inventory has support/privacy links on the portal.
+- With --workspace, sibling repositories have native contacts and agent/security files.
 
-Usage: python3 -I scripts/check.py
+Usage: python3 -I scripts/check.py [--workspace]
 """
-import os
+import json
 import re
 import sys
 from pathlib import Path
@@ -22,6 +24,35 @@ NO_CONTACT = {"index.html", "404.html"}
 
 problems = []
 pages = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
+apps = json.loads((ROOT / "apps.json").read_text(encoding="utf-8"))
+home = (ROOT / "index.html").read_text(encoding="utf-8")
+for app in apps:
+    support = ROOT / "apps" / app["id"] / "index.html"
+    if not support.is_file():
+        problems.append(f"{app['id']}: missing support page")
+    for href in (f"apps/{app['id']}/", app["privacy"]):
+        if f'href="{href}"' not in home and f'href="{href.lstrip("/")}"' not in home:
+            problems.append(f"{app['id']}: missing portal link {href}")
+
+if "--workspace" in sys.argv:
+    for name in [app["id"] for app in apps] + [ROOT.name]:
+        repo = ROOT.parent / name
+        for filename in ("AGENTS.md", "CLAUDE.md", "SECURITY.md"):
+            if not (repo / filename).is_file():
+                problems.append(f"{name}: missing {filename}")
+        claude = repo / "CLAUDE.md"
+        if claude.is_file() and claude.read_text().strip() != "See @AGENTS.md for monorepo documentation and guidelines.":
+            problems.append(f"{name}: CLAUDE.md must redirect to AGENTS.md")
+        security = repo / "SECURITY.md"
+        if security.is_file() and CONTACT_EMAIL not in security.read_text():
+            problems.append(f"{name}: missing security contact")
+        if not list((repo / ".github" / "workflows").glob("*.y*ml")):
+            problems.append(f"{name}: no Actions workflows")
+    for app in apps:
+        if app["native_contact"]:
+            source = ROOT.parent / app["id"] / app["native_contact"]
+            if not source.is_file() or CONTACT_EMAIL not in source.read_text():
+                problems.append(f"{app['id']}: missing native contact address")
 
 for external in EXTERNAL_PATHS:
     if (ROOT / external.strip("/")).exists():
