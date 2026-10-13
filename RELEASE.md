@@ -48,8 +48,9 @@ checklist; app-specific listings and hardware checks stay in each app's release 
   carefully, with extensive tests local. Verify branch-protection checks in GitHub settings.
   Path-filtered workflows can remain pending when required; use an always-running
   gate with conditional jobs if branch protection requires those checks on docs-only PRs.
-- New Watch workflows require Xcode 27+. The selected runner must actually include
-  it; a toolchain failure is not a reason to disable meaningful compilation checks.
+- Watch smoke builds use Xcode 26.6 on the standard macOS 26 runner. Local Xcode 27
+  simulator and hardware checks cover the newer SDK. Verify runner toolchain availability
+  before changing versions; keep meaningful compilation checks enabled.
 
 ## App inventory
 
