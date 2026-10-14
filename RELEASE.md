@@ -27,8 +27,19 @@ checklist; app-specific listings and hardware checks stay in each app's release 
 
 - Feature branches run from Xcode directly on the device. A push to `main` triggers the app's
   Xcode Cloud workflow: Archive action on the release scheme (the `*Stub` scheme for watch-only
-  apps), deployment preparation TestFlight (Internal Testing), post-action delivery to the
-  internal group. Xcode Cloud signs with cloud-managed certificates; no secrets live in GitHub.
+  apps), **Distribution Preparation: App Store Connect**, post-action **TestFlight Internal
+  Testing** delivery to the internal group. Enable **Restrict Editing** under General. Apple's
+  documentation calls the eligible archive option **TestFlight and App Store**. Xcode Cloud
+  signs with cloud-managed certificates; no secrets live in GitHub.
+- **TestFlight (Internal Testing Only)** in the Archive action prevents App Store submission
+  of that uploaded build. The internal-testing post-action only chooses the tester audience
+  and can remain enabled for an App Store-eligible archive. After correcting the Archive
+  setting, create a new build with a higher build number; existing internal-only uploads do
+  not become eligible. Once processing finishes, verify that the new build is selectable in
+  the App Store version's **Add Build** dialog. Internal TestFlight delivery alone does not
+  prove release eligibility.
+  References (14 October 2026): [Apple workflow configuration](https://developer.apple.com/documentation/xcode/creating-a-workflow-that-builds-your-app-for-distribution)
+  and [internal-only build restrictions](https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers/).
 - Xcode Cloud uses its own build number and ignores `CURRENT_PROJECT_VERSION`. After a manual
   Organizer upload, raise the next build number in the product's Xcode Cloud settings.
 - `ci_scripts/ci_post_xcodebuild.sh` writes the TestFlight "What to Test" notes from the recent
