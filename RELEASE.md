@@ -23,6 +23,19 @@ checklist; app-specific listings and hardware checks stay in each app's release 
   Apple's current criteria before launch; tips/free pricing alone do not establish
   non-trader status. Never publish a private home address by default.
 
+## Delivery to TestFlight (14 October 2026)
+
+- Feature branches run from Xcode directly on the device. A push to `main` triggers the app's
+  Xcode Cloud workflow: Archive action on the release scheme (the `*Stub` scheme for watch-only
+  apps), deployment preparation TestFlight (Internal Testing), post-action delivery to the
+  internal group. Xcode Cloud signs with cloud-managed certificates; no secrets live in GitHub.
+- Xcode Cloud uses its own build number and ignores `CURRENT_PROJECT_VERSION`. After a manual
+  Organizer upload, raise the next build number in the product's Xcode Cloud settings.
+- `ci_scripts/ci_post_xcodebuild.sh` writes the TestFlight "What to Test" notes from the recent
+  commit subjects. The committed, drift-checked Xcode project is what Xcode Cloud builds.
+- Xcode Cloud compute comes from the Developer Program's monthly allowance; only `main`
+  archives, pull requests stay on the GitHub Actions smoke checks.
+
 ## CI cost policy
 
 - Every job has a timeout: portal 3 min, web checks/builds 10 min, web deploy 5 min,
