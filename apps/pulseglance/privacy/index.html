@@ -14,7 +14,8 @@
       <p class="nav"><a href="/">ScreamXY</a> · <a href="../">PulseGlance support</a></p>
       <h1>Privacy Policy</h1>
       <p class="meta">Last updated: 15 October 2026</p>
-      <p>PulseGlance displays existing heart-rate readings on Apple Watch, made by Pascal Schrei.
+      <p>PulseGlance displays existing heart-rate readings and activity-ring progress on Apple Watch,
+        made by Pascal Schrei.
         The app was called HeartGlance until 15 October 2026.</p>
       <h2>Who is responsible</h2>
       <p>Pascal Schrei, Switzerland. Contact:
@@ -24,24 +25,34 @@
       <p>PulseGlance does not upload your health data or collect it on a developer server.
         There are no accounts, analytics, advertisements, tracking or third-party SDKs.</p>
       <h2>Health access and purpose</h2>
-      <p>With your permission, the app and complication read heart-rate samples from Apple Health
+      <p>With your permission, the app and complications read heart-rate samples from Apple Health
         to show the newest valid value, its measurement time and its age. A sample's source
-        (the device or app that recorded it) is also available in diagnostics. PulseGlance
-        requests read access only to heart rate. It never writes Health data, starts a workout
-        or requests additional heart-rate measurements.</p>
+        (the device or app that recorded it) is also available in diagnostics. The app also reads
+        today's heart-rate samples to show the day's minimum and maximum.</p>
+      <p>With a separate permission, the app and the Heart Rate &amp; Activity complication read
+        today's activity summary to show Move, Exercise and Stand progress against your goals.
+        Either permission works without the other.</p>
+      <p>PulseGlance requests read access only to heart rate and activity summaries. It never
+        writes Health data, starts a workout or requests additional heart-rate measurements.</p>
       <h2>Local storage and retention</h2>
-      <p>The app and its complication share an App Group container on your watch. It holds one
+      <p>The app and its complications share an App Group container on your watch. It holds one
         latest reading (BPM, time and source), permission-request state, and limited diagnostics:
-        query times, counters, the last errors, and up to 20 recent timeline generations and
-        background deliveries. Diagnostics do not keep a history of heart-rate values.
-        A newer reading replaces the cached reading; it has no automatic age-based expiry.</p>
+        query times, counters and the last errors; for each complication up to 20 recent timeline
+        generations (time, slot type, where the reading came from, its time, and whether an activity
+        summary was read); and up to 20 recent background deliveries with their processing times.
+        Diagnostics do not keep
+        heart-rate values or activity totals. Today's range and activity totals are shown but not
+        stored in the container. A newer reading replaces the cached reading; it has no automatic
+        age-based expiry. watchOS keeps what a complication currently displays until its next
+        refresh.</p>
       <p>PulseGlance does not implement cloud sync. Local app data may be included in watch
         backups managed by Apple and your device settings. Apple Health's own storage,
         syncing and backup are separate from PulseGlance.</p>
       <h2>Revoke access and delete data</h2>
-      <p>You can turn off PulseGlance's Heart Rate permission in Health settings on your watch
-        or paired iPhone. Reopen PulseGlance afterwards: when Health returns no samples, the
-        app clears the cached reading and requests a complication refresh. Revoking permission
+      <p>You can turn off PulseGlance's Heart Rate and Activity permissions in Health settings on
+        your watch or paired iPhone. Reopen PulseGlance afterwards: when Health returns no samples,
+        the app clears the cached reading and requests a complication refresh. Activity totals are
+        not cached, so the app stops showing them once Health returns no summary. Revoking permission
         alone does not instantly erase an already displayed complication; watchOS controls refreshes.
         If Health is locked or a query fails, the cached reading can remain available.</p>
       <p>Diagnostics → Reset Counters clears the app's diagnostic record and invalidates the
@@ -50,8 +61,9 @@
         are managed separately. PulseGlance never deletes the original Apple Health records.</p>
       <h2>Security and sharing</h2>
       <p>HealthKit permission and the watchOS app sandbox restrict access. The shared container
-        is used by PulseGlance and its complication. BPM in the complication is marked
-        privacy-sensitive; visibility also depends on your lock and Always On settings.
+        is used by PulseGlance and its complications. BPM and activity progress in the
+        complications are marked privacy-sensitive; visibility also depends on your lock and
+        Always On settings.
         PulseGlance does not send Health data to the developer, advertisers or other services.</p>
       <h2>Support and websites</h2>
       <p>If you choose to email support, your email address and anything you include are

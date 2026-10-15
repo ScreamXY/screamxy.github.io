@@ -13,33 +13,44 @@
     <main>
       <p class="nav"><a href="/">ScreamXY</a> · <a href="privacy/">Privacy policy</a></p>
       <h1>PulseGlance</h1>
-      <p>Your latest heart rate and how old it is, right on your Apple Watch face.
+      <p>Your latest heart rate and how old it is, right on your Apple Watch face. The app also
+        shows today's heart-rate range and your Move, Exercise and Stand progress.
         A small, watch-only app for watchOS 26 or later. Coming to the App Store.</p>
       <p>Questions or bugs? Write to <a href="mailto:screamcode@gmail.com">screamcode@gmail.com</a>.
         Include the app version, watchOS version and what happened. Please omit heart-rate values
         and other health information from screenshots unless you want to share them.</p>
       <h2>Frequently asked</h2>
       <h3>Does it measure my heart rate?</h3>
-      <p>No. PulseGlance reads the latest heart-rate sample already in Apple Health.
-        It never starts a workout, takes extra measurements or writes to Health.</p>
+      <p>No. PulseGlance reads the latest heart-rate sample already in Apple Health, and today's
+        activity summary for ring progress. It never starts a workout, takes extra measurements
+        or writes to Health.</p>
       <h3>How do I add it to my watch face?</h3>
       <p>Touch and hold your watch face, tap Edit, choose a complication slot and select
-        PulseGlance. Circular, rectangular, inline and corner slots are supported.</p>
+        PulseGlance. Circular, rectangular, inline and corner slots are supported. In a circular
+        slot you can also choose Heart Rate &amp; Activity: your latest pulse inside three arcs for
+        Move, Exercise and Stand.</p>
       <h3>Why is the number old or grey?</h3>
       <p>Apple controls background measurements and complication refreshes. PulseGlance shows
-        the sample's real age, and dims readings older than 30 minutes. Opening the app refreshes
-        from Health, but does not take a new measurement. It is not a live monitor.</p>
+        the sample's real age, and dims readings older than 30 minutes. In our tests watchOS
+        refreshed the complication about every 30 minutes, so a reading can turn grey shortly
+        before the next refresh. Opening the app refreshes from Health, but does not take a new
+        measurement. It is not a live monitor.</p>
       <h3>Why does it say “No Heart Rate”?</h3>
       <p>There may be no reading available, or Health access may be off. Check PulseGlance's
         Heart Rate permission in Health settings on the watch or paired iPhone, wear and unlock
         your watch, then reopen the app. Apple does not tell apps whether read permission was denied.</p>
+      <h3>Why is there no activity progress?</h3>
+      <p>There may be no activity summary for today yet, or Activity access may be off. Check
+        PulseGlance's Activity permission in Health settings on the watch or paired iPhone, then
+        reopen the app. The heart-rate reading works without it.</p>
       <h3>What happens while my watch is locked?</h3>
       <p>HealthKit may be unavailable, so the complication can use its cached reading.
-        Its BPM is marked privacy-sensitive. Review your watch's Always On settings if you
-        do not want complication data visible when your wrist is lowered.</p>
+        Its BPM and activity progress are marked privacy-sensitive. Review your watch's Always On
+        settings if you do not want complication data visible when your wrist is lowered.</p>
       <h3>How do I remove my data?</h3>
-      <p>Turn off PulseGlance's Heart Rate permission and reopen the app to clear the cached
-        reading once Health returns no samples. Diagnostics → Reset Counters clears diagnostic
+      <p>Turn off PulseGlance's Heart Rate and Activity permissions and reopen the app to clear
+        the cached reading once Health returns no samples. Activity totals and today's range are
+        never cached. Diagnostics → Reset Counters clears diagnostic
         records. Delete PulseGlance to remove its local app data; it does not delete Apple Health
         records. See the <a href="privacy/">privacy policy</a> for retention and backup details.</p>
       <h2>Health and safety</h2>
