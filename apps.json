@@ -1,8 +1,8 @@
 [
   {
-    "id": "heartglance",
-    "privacy": "/apps/heartglance/privacy/",
-    "native_contact": "HeartGlance/App/HeartGlanceLinks.swift"
+    "id": "pulseglance",
+    "privacy": "/apps/pulseglance/privacy/",
+    "native_contact": "PulseGlance/App/PulseGlanceLinks.swift"
   },
   {
     "id": "rainscope",

@@ -1,6 +1,6 @@
 # Shared ScreamXY release checks
 
-Scope: HeartGlance, RainScope, Pacegrain, Werkout, Mampf!, Heischwumm and King's Cup.
+Scope: PulseGlance, RainScope, Pacegrain, Werkout, Mampf!, Heischwumm and King's Cup.
 The live task list and decisions remain in the Obsidian vault's
 `Privat/Development/ScreamXY/ScreamXY.md` and `TODO.md`. This document is the reusable
 checklist; app-specific listings and hardware checks stay in each app's release kit.

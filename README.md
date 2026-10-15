@@ -49,6 +49,6 @@ Heischwumm's deploy workflow. The portal's start page redirects old
 
 See [RELEASE.md](RELEASE.md) for shared release gates and CI cost policy,
 [SECURITY.md](SECURITY.md) for private vulnerability reports, and `apps.json`
-for the app inventory. HeartGlance is included with its own support/privacy pages.
+for the app inventory. PulseGlance is included with its own support/privacy pages.
 Run `python3 -I scripts/check.py --workspace` to check the sibling native
 contact files and agent-documentation convention as well as the portal.

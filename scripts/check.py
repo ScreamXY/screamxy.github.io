@@ -20,7 +20,9 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTACT_EMAIL = "screamcode@gmail.com"
 # Served by other repositories' GitHub Pages under the same domain.
 EXTERNAL_PATHS = ("/heischwumm/", "/kingscup/")
-NO_CONTACT = {"index.html", "404.html"}
+# Redirects from renamed app paths carry neither a contact line nor a policy date.
+REDIRECTS = {"apps/heartglance/index.html", "apps/heartglance/privacy/index.html"}
+NO_CONTACT = {"index.html", "404.html"} | REDIRECTS
 
 problems = []
 pages = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
@@ -67,7 +69,7 @@ for page in pages:
             problems.append(f"{rel}: contact address {email} differs from {CONTACT_EMAIL}")
     if rel not in NO_CONTACT and CONTACT_EMAIL not in text:
         problems.append(f"{rel}: no contact address")
-    if rel.endswith("privacy/index.html") and not re.search(r'class="meta">(Last updated|Stand):', text):
+    if rel.endswith("privacy/index.html") and rel not in REDIRECTS and not re.search(r'class="meta">(Last updated|Stand):', text):
         problems.append(f"{rel}: no 'last updated' line")
 
     for href in re.findall(r'href="([^"]+)"', text):
