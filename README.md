@@ -2,7 +2,7 @@
 
 The ScreamXY portal: one start page for all apps, plus the support page and
 privacy policy App Store Connect asks for. Plain HTML and one stylesheet, no
-build step. GitHub Pages serves the `master` branch as is.
+build step. GitHub Pages serves the `main` branch as is.
 
 | Path                                  | What                                                        |
 | ------------------------------------- | ----------------------------------------------------------- |
