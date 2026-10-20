@@ -5,6 +5,8 @@ The live task list and decisions remain in the Obsidian vault's
 `Privat/Development/ScreamXY/ScreamXY.md` and `TODO.md`. This document is the reusable
 checklist; app-specific listings and hardware checks stay in each app's release kit.
 
+Current draft handoff: [20 October 2026 preparation](RELEASE-PREPARATION-2026-10-20.md).
+
 ## Each Apple app
 
 - Public support URL, reachable privacy policy in the app and App Store Connect,
