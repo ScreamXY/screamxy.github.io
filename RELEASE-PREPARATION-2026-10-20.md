@@ -7,8 +7,8 @@ All five version drafts were reopened and verified in App Store Connect. **No re
 | RainScope | 1.0 (8) | Lighter icon build, correction notes, two Watch screenshots | Installed Watch icon check, owner's review, reply/resubmission |
 | Pacegrain | 1.0.0 (5) | Six requested answers, simulator rehearsal and repeatable physical steps | Physical-device recording on latest public OS; three tips still drafts |
 | PulseGlance | 1.0 (7) | Updated percentage/quarter-marker listing and notes, two Watch screenshots | Physical Watch legibility, HealthKit/privacy and remaining acceptance checks |
-| Werkout | 1.0.0 (2) | EN/DE listing and required screenshots, contact/notes, free/175 regions, age/medical declaration, three tip drafts, unpublished privacy draft | Rights confirmation, provider privacy review, tip screenshots/inclusion, device gates |
-| Mampf! | 1.0.0 (2) | DE listing, 8 iPhone/8 iPad/1 Watch screenshots, contact/notes, free/175 regions, three tip drafts, unpublished privacy draft | Rights confirmation, IP/log privacy review, tip screenshots/inclusion, device gates |
+| Werkout | 1.0.0 (2) | EN/DE listing and required screenshots, contact/notes, free/175 regions, age/medical declaration, content rights, three tip drafts, unpublished privacy draft | Provider privacy review, tip screenshots/inclusion, device gates |
+| Mampf! | 1.0.0 (2) | DE listing, 8 iPhone/8 iPad/1 Watch screenshots, contact/notes, free/175 regions, content rights, three tip drafts, unpublished privacy draft | IP/log privacy review, tip screenshots/inclusion, device gates |
 
 ## Open the app-specific handoff
 
@@ -26,7 +26,7 @@ Werkout's old blanket Data Not Collected instruction was incorrect for optional 
 
 Mampf's draft contains six categories. Five are configured for app functionality, linked to the user, without tracking. The security IP category remains unconfigured until hosting/provider log linkage and retention are checked. The public policy already describes security IP collection and opportunistic cleanup. The source worksheets record both the evidence and the unresolved questions.
 
-Content-rights declarations for Werkout and Mampf remain unset pending the owner's confirmation. No legal agreements, banking/tax records or trader-status decisions were changed. Optional Accessibility Nutrition Labels remain unclaimed until the actual accessibility checks are completed.
+On **21 October 2026**, Pascal confirmed ownership or permission for all artwork and bundled content in Werkout and Mampf, including Mampf's Open Food Facts content. Both Content Rights declarations were saved and verified after reloading App Store Connect: Werkout does not contain/show/access third-party content; Mampf has the necessary rights to its third-party content. Both versions remain Prepare for Submission. No legal agreements, banking/tax records or trader-status decisions were changed. Optional Accessibility Nutrition Labels remain unclaimed until the actual accessibility checks are completed.
 
 Werkout and Mampf each have three created consumables with prices/localizations/notes, but still need a screenshot of their actual tip section and inclusion with the first app review. Pacegrain's existing three products also show Prepare for Submission. Creation and sandbox testing are not product approval.
 
