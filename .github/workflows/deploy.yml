@@ -1,0 +1,64 @@
+name: Deploy portal
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'SECURITY.md'
+      - 'RELEASE.md'
+      - 'RELEASE-PREPARATION-*.md'
+      - '.github/workflows/ci.yml'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/PULL_REQUEST_TEMPLATE*'
+      - '.github/CODEOWNERS'
+      - '.vscode/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Validate published content
+        run: python3 -I scripts/check.py
+      - name: Stage static site
+        run: >-
+          rsync -a ./ _site/
+          --exclude=/.git/ --exclude=/.github/ --exclude=/.vscode/
+          --exclude=/_site/ --exclude=/scripts/
+          --exclude=/README.md --exclude=/AGENTS.md --exclude=/CLAUDE.md
+          --exclude=/SECURITY.md --exclude=/RELEASE.md
+          --exclude='/RELEASE-PREPARATION-*.md'
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+          retention-days: 1
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: package
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish static site
+        id: deployment
+        uses: actions/deploy-pages@v4

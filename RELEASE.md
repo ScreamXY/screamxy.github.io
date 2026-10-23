@@ -78,6 +78,80 @@ Current draft handoff: [20 October 2026 preparation](RELEASE-PREPARATION-2026-10
   simulator and hardware checks cover the newer SDK. Verify runner toolchain availability
   before changing versions; keep meaningful compilation checks enabled.
 
+### Change scope
+
+Apply the same rule across every project: run a job when a change can affect its
+output or the behavior it checks. Each repository owns its actual path filters.
+Exclude only confirmed internal documentation, release materials and unrelated
+component inputs. Unknown paths still run. Do not exclude all Markdown or text:
+Whetstone imports `skill-template/self-improvement-section.md` into its app,
+Werkout uses text corpus fixtures, and this portal publishes support/privacy pages
+and font license files. Dependencies, localization, migrations and shared contracts
+remain inputs. Mixed documentation/source changes must run the affected jobs.
+
+- Single-product Actions workflows use explicit `paths-ignore` lists. Manual runs
+  bypass those lists; release-tag builds retain their existing behavior.
+- Mampf's web checks skip confirmed native-only files, while Apple checks skip
+  web UI trees. API, shared data, migrations and unknown/configuration paths still
+  run the Apple checks. JavaScript/TypeScript in `apple/` remains in web CI scope
+  because the root tools include it. Its Vercel ignore command compares against
+  the last successful deployment, builds when history is unavailable, and can be
+  bypassed with `CI_FORCE_BUILD=1` or the redeploy dialog's ignore-step override.
+- `ytmusic-watch` runs one cheap change-selection and secret-scan job on every PR
+  and main push, including docs-only changes. Backend, Docker, Go bridge, Swift
+  core and the opt-in Watch build run conditionally. Shared contracts, unknown
+  inputs and unavailable history run all eligible jobs. Git diffs cover the whole
+  push or PR merge base and both sides of renames. The secret scan remains global.
+- King's Cup and Heischwumm keep test-only changes in CI but skip Pages deployment
+  for their excluded unit/E2E inputs. Shipped assets still deploy.
+- Before making a path-filtered workflow a required check, remove its event-level
+  path filter and use an always-running gate with conditional jobs. Require the
+  gate as well, so a failed change detector cannot produce an apparently green PR.
+
+### Xcode Cloud file conditions
+
+Each Apple repository records the live `branchStartCondition.filesAndFoldersRule`
+in `.github/xcode-cloud-paths.json`. Xcode Cloud does **not** read that file
+automatically. Its `Main to TestFlight` workflow uses **Do not start a build if
+only the following files and folders have changed**, limited to confirmed internal
+documentation and release materials. Mixed changes, source, fixtures and build
+configuration continue to trigger it; manual start conditions are preserved.
+Apple's filename rules match that name at any depth, and folder rules are
+recursive. The excluded names (`README.md`, `AGENTS.md`, `CLAUDE.md`, `SECURITY.md`
+and the recorded review notes) are internal documentation in the current Apple
+projects. Revisit the live rule before bundling a file with one of those names;
+never replace these specific names with a blanket Markdown-extension exclusion.
+
+Edit the live workflow through App Store Connect/Xcode and keep the JSON in sync.
+When using the API, send all existing automatic **and manual** start conditions:
+omitting another condition can clear it. Re-read the workflow after saving and
+verify that only the intended file rule changed, including checking archive,
+TestFlight, branch, toolchain and manual-start settings.
+
+### Portal deployment activation
+
+`.github/workflows/deploy.yml` validates and packages the static site, excluding
+only internal repository files. Product content, including future nested Markdown,
+is retained. Publish that workflow to `main` **before** changing Settings → Pages
+→ Source from **Deploy from a branch** to **GitHub Actions**, then run **Deploy
+portal** manually once and verify the public site. Until that switch, GitHub's
+automatic `pages-build-deployment` still deploys every main push, regardless of the
+path filters in the new workflow. Do not change the Pages source before its
+replacement workflow is available on `main`.
+
+### Validation of trigger changes
+
+Lint modified workflows with `actionlint`; exercise docs-only, mixed, shipped
+content, lockfile, configuration, fixture and unknown-path cases. For component
+selection also test multi-commit pushes, PR merge bases, deletion/renames and
+missing history. The repository-owned executable regression tests are:
+
+- `ytmusic-watch`: `python3 -m unittest discover -s .github/scripts -p 'test_*.py'`.
+- `mampf`: `node --test scripts/vercel-ignore.test.mjs`.
+
+Local filter checks establish routing behavior, not a successful hosted app build
+or deployment. Report publication and live execution separately.
+
 ## App inventory
 
 `apps.json` tracks the seven app slugs, public privacy URLs and native contact files.
