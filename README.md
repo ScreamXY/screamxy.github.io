@@ -2,7 +2,8 @@
 
 The ScreamXY portal: one start page for all apps, plus the support page and
 privacy policy App Store Connect asks for. Plain HTML and one stylesheet, no
-build step. GitHub Pages serves the `main` branch as is.
+build step. The `Deploy portal` workflow (`.github/workflows/deploy.yml`)
+checks `main` and publishes it to GitHub Pages without the internal files.
 
 | Path                                  | What                                                        |
 | ------------------------------------- | ----------------------------------------------------------- |
@@ -11,7 +12,7 @@ build step. GitHub Pages serves the `main` branch as is.
 | `apps/<app>/privacy/`                 | Privacy policy (App Store Connect "Privacy Policy URL")     |
 | `legal/`                              | Legal notice / Impressum                                    |
 | `privacy/`                            | Privacy notice for this site itself                         |
-| `scripts/check.py`                    | Link, contact-address and date check; run before publishing |
+| `scripts/check.py`                    | Link, contact, head and date check; run before publishing   |
 | `fonts/`                              | Signika, self-hosted (SIL OFL); no fonts from third parties |
 | `favicon.svg`                         | Site icon: `<!>`, a scream in code brackets (screamcode)    |
 | `favicon.ico`, `apple-touch-icon.png` | Rendered from `favicon.svg` by `scripts/make_icons.py`      |
@@ -49,6 +50,6 @@ Heischwumm's deploy workflow. The portal's start page redirects old
 
 See [RELEASE.md](RELEASE.md) for shared release gates and CI cost policy,
 [SECURITY.md](SECURITY.md) for private vulnerability reports, and `apps.json`
-for the app inventory. PulseGlance is included with its own support/privacy pages.
-Run `python3 -I scripts/check.py --workspace` to check the sibling native
-contact files and agent-documentation convention as well as the portal.
+for the app inventory. Run `python3 -I scripts/check.py --workspace` to check
+the sibling native contact files and agent-documentation convention as well as
+the portal.

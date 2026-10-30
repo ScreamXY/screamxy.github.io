@@ -128,16 +128,14 @@ omitting another condition can clear it. Re-read the workflow after saving and
 verify that only the intended file rule changed, including checking archive,
 TestFlight, branch, toolchain and manual-start settings.
 
-### Portal deployment activation
+### Portal deployment
 
 `.github/workflows/deploy.yml` validates and packages the static site, excluding
 only internal repository files. Product content, including future nested Markdown,
-is retained. Publish that workflow to `main` **before** changing Settings → Pages
-→ Source from **Deploy from a branch** to **GitHub Actions**, then run **Deploy
-portal** manually once and verify the public site. Until that switch, GitHub's
-automatic `pages-build-deployment` still deploys every main push, regardless of the
-path filters in the new workflow. Do not change the Pages source before its
-replacement workflow is available on `main`.
+is retained. Settings → Pages → Source is **GitHub Actions** (checked 30 October
+2026), so this workflow is the only deployment and its path filters apply. If the
+source is ever set back to **Deploy from a branch**, GitHub's automatic
+`pages-build-deployment` deploys every main push again, regardless of these filters.
 
 ### Validation of trigger changes
 
